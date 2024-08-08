@@ -1,0 +1,116 @@
+<html>
+    <head>
+      
+        <script>
+            function myalert() {
+              let name=document.forms["myform"]["uname"].value;
+                 if(name == ""){
+                    alert("please enter name");
+                    return false;
+
+                 }
+
+                 let username=document.forms["myform"]["username"].value;
+                 if(username == ""){
+                    alert("please enter user name");
+                    return false;
+
+                 }
+
+                 let pw=document.forms["myform"]["password"].value;
+                 if(pw == ""){
+                    alert("please enter password");
+                    return false;
+
+                 }
+                 let cp=document.forms["myform"]["confirmpassword"].value;
+                 if(cp == ""){
+                    alert("please enter confirm password");
+                    return false;
+
+                 }
+                 let p=document.forms["myform"]["phno"].value;
+                 if(p == ""){
+                    alert("please enter phone number");
+                    return false;
+
+                 }
+                 let email=document.forms["myform"]["email"].value;
+                 if(email == ""){
+                    alert("please enter email");
+                    return false;
+
+                 }
+                 let ad=document.forms["myform"]["address"].value;
+                 if(ad == ""){
+                    alert("please enter address");
+                    return false;
+
+                 }
+            
+                 
+
+                
+            }
+        </script>
+
+     </head>
+        <body bgcolor="aqua ">
+            
+            <h1>Registration form </h1>
+            <form name="myform" onsubmit="return myalert()">
+            <table>
+            <tr>
+            <td> Name</td>
+            <td><input type="text" placeholder="" name="uname"></td>
+            <script>
+                 
+            </script>
+            </tr>
+            <tr>
+                <td>user name</td>
+                <td><input type="text" placeholder="" name="username"></td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td><input type="text" placeholder="" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td>confirm password</td>
+                        <td><input type="text" placeholder="" name="confirmpassword"></td>
+                        </tr>
+                        <tr>
+                            <td>phone</td>
+                            <td><input type="text" placeholder="" name="phno"></td>
+                            </tr>
+                            <tr>
+                                <td>email</td>
+                                <td><input type="text" placeholder="" name="email"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>address</td>
+                                   <td> <textarea id="w3review" name="address" rows="6" cols="6"></textarea></td>
+                                    
+                                    </tr>
+
+
+                                        <td></td>
+                                        <td><button type="submit" onclick="myalert()">
+                                            
+                                            submit
+                                        </button>
+                                        
+                                    <button>reset</button>
+                                    </td>
+                                    
+                                
+                                            
+                                               
+
+
+
+            </table>
+        </form>
+           </body>
+           </html>

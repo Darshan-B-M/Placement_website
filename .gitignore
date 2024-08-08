@@ -1,0 +1,15 @@
+# Ignore system files and directories
+.bash_history
+.cache/
+.eclipse/
+.gitconfig
+.lemminx/
+.lesshst
+.m2/
+.node_repl_history
+.p2/
+.sts4/
+.vscode/
+AppData/
+NTUSER.DAT*
+ntuser.ini

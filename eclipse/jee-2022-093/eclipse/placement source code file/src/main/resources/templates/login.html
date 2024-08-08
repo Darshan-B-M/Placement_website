@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+      <div class="login-box hello">
+    <div class="login-logo ">
+
+      <a href="index.php" style="color:black"><b>Placement Portal</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body bg-blue-200 text-black ">
+      <p class="login-box-msg text-2xl text-black">Login</p>
+
+      <form method="post" action="/login " class="text-xl login-form">
+<div class="form-group">
+<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+<input type="email" class="form-control rounded-left" name="username" placeholder="Username/Email" required>
+</div>
+<div class="form-group">
+<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+<input type="password" class="form-control rounded-left" name="password" placeholder="Password" required>
+</div>
+
+        
+        <div class="row ">
+           <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid Username or Password</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success">You have been logged out.</div>
+            </div>  
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="flex mx-auto mt-6 text-white   border-0 py-2 px-5  bg-primary rounded">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <br>
+
+       
+</div>
+    </div>
+ 
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+
+     </div>
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="index :: footer">
+        
+     
+     </footer>
+   </body>
+ </html>

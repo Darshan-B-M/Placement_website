@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+<title>Placement Portal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+ 
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/animate.css"> 
+<link rel="stylesheet" href="/assets/css/aos.css">  
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css"> 
+<link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="/assets/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/vendor/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"> 
+<link rel="stylesheet" href="/assets/vendor/jquery-ui/jquery-ui.min.css">
+ <body>
+<nav class="navbar navbar-expand-lg navbar-white ftco_navbar bg-dark ftco-navbar-light ftco-animate" id="ftco-navbar"  th:fragment="menu">
+<div class="container">
+<a class="navbar-brand" href="/"><img src="/assets/images/logo.png"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="oi oi-menu"></span> Menu
+</button>
+<div class="collapse navbar-collapse" id="ftco-nav">
+<ul class="navbar-nav ml-auto">
+<li class="nav-item active"><a href="/company" class="nav-link">Dashboard</a></li> 
+ 
+ 
+<li class="nav-item">
+   <a href="/company/campusdrives" class="nav-link">Campus Drives</a> 
+</li> 
+ 
+<li class="nav-item dropdown">
+   <a href="#" class="nav-link">Account</a>
+   <ul class="dropdown-menu">
+     <li class="nav-item"><a href="/company/profile" class="nav-link">Profile</a></li>
+     <li class="nav-item"><a href="/company/changepassword" class="nav-link">Change Passoword</a></li>
+      <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
+   </ul> 
+</li>  
+</ul>
+</div>
+</div>
+</nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+  <div class="row mb-3">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Applications</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="pendingapps"> </div>
+                     
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-file-alt fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Departments</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="totdep"> </div>
+                       
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-building fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- New User Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Designations</div>
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="totaldes"> </div>
+                     
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-th-list fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Active Employees</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalemps"> </div>
+                       
+                    </div>
+                    <div class="col-auto">
+                      <i class="fa fa-list fa-2x text-warning"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+   
+
+        </div>
+        </div>
+        </section>
+      
+<footer class="ftco-footer ftco-bg-dark ftco-section"  th:fragment="footer">
+<div class="container"> 
+<div class="row">
+<div class="col-md-12 text-center">
+<p>
+Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved 
+</p>
+</div>
+</div>
+</div> 
+<div class="modal fade" id="confirm_modal" role='dialog'>
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+      </div>
+      <div class="modal-body">
+        <div id="delete_content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+<script src="/assets/js/jquery.min.js"></script> 
+    <script src="/assets/vendor/jquery-ui/jquery-ui.min.js">
+<script src="/assets/js/jquery-migrate-3.0.1.min.js"></script>  
+<script src="/assets/js/jquery.waypoints.min.js"></script> 
+<script src="/assets/js/aos.js"></script>  
+<script src="/assets/js/bootstrap.bundle.min.js"></script> 
+  <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script> 
+    <script src="/assets/vendor/sweetalert2/sweetalert2.min.js"></script> 
+    <script src="/assets/vendor/toastr/toastr.min.js"></script>
+<script src="/assets/js/main.js"></script> 
+</footer>
+ </body>
+</html>

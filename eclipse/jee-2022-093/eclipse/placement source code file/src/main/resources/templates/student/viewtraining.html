@@ -1,0 +1,72 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="student/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="student/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h2 class="m-0 font-weight-bold text-primary">View Placement Training</h2>
+                  </div>  
+                    
+                <div class="card-body"> 
+
+		<div class="form-group"> 
+			<h5  th:text="${tobj.title}"></h5>
+		</div>
+		 <div class="form-group"> 
+			<p th:utext="${tobj.description}"></p>
+		</div>
+	<div class="form-group">
+			<label  class="control-label">Location: <span  th:text="${tobj.location}"></span></label>
+	 	</div>
+		<div class="form-group">
+			<label   class="control-label">Period: <span  th:text="${tobj.fromdate+' '+tobj.todate}"></span></label>
+	 	</div>
+			 
+		</div>
+		<br/>
+		<br/>
+		
+		<div class="row">
+		<h3>Applicapable to</h3> 
+	  
+		<h4>Branch-Courses:</h4>
+		<br/>
+		<div class="row mb-3">
+		  <div th:each="d:${branch}">
+		   <div class="col-12">
+			<h5  class="control-label" th:text="${d}">To</h5> 
+		 </div>
+		</div>
+		</div>
+		 
+                </div> 
+                
+		<h4>Academic Year</h4>
+		<hr/> 
+		<div class="col-3" th:each="e:${academicyear}">
+			 
+			   <label th:text="${e}"></label>
+			 </div>  
+                </div> 
+              </div>
+            </div> 
+          <!--Row-->
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="student/index :: footer"> 
+     
+     </footer>  
+    
+</body>
+
+</html>

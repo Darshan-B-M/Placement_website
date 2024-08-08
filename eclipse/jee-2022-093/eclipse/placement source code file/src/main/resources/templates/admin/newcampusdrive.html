@@ -1,0 +1,193 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="admin/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="admin/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h2 class="m-0 font-weight-bold text-primary">New Campuse Drive</h2>
+                  </div>  
+                    
+                <div class="card-body">
+                        <form action="/admin/JSON/campusdrives" id="modalform" method="post"> 
+             	
+		<input type="hidden" name ="id" value="0">
+		<input type="hidden" name ="action" value="add">
+<div class="form-group">
+							<label for="company" class="required">Company</label>
+						   <input type="text" name="keycompany" id="keycompany"  class="form-control rounded-0" required> 
+                           <input type="hidden" name="company" id="company"    required>  
+						</div>
+		<div class="form-group">
+			<label for="title" class="control-label required">Title</label>
+			<input name="title" id="title" type="text" class="form-control form  rounded-0"   required/>
+		</div>
+		<div class="form-group">
+			<label for="status" class="control-label required">Status</label>
+			 <select name="status" id="status" class="form-control form  rounded-0">
+			   <option value=0>Closed</option>
+			   <option value=1>Open</option>
+			 </select>
+		</div>
+		 <div class="form-group">
+			<label for="content" class="control-label required">Content</label>
+			<textarea name="content" id="content"  class="form-control form  rounded-0"   required></textarea>
+		</div>
+	<div class="form-group">
+			<label for="location" class="control-label required">Location</label>
+			<input name="location" id="location" type="text" class="form-control form  rounded-0"   required/>
+		</div>
+		<div class="form-group row">
+		    <div class="col-6">
+			<label for="fromdate" class="control-label required">From Date</label>
+			<input name="fromdate" id="fromdate" type="date" class="form-control form  rounded-0"   required/>
+		 </div>
+		 <div class="col-6">
+			<label for="todate" class="control-label required">To Date</label>
+			<input name="todate" id="todate" type="date" class="form-control form  rounded-0"   required/>
+		</div>
+			 
+		</div>
+			<div class="form-group">
+			<label for="requiredscore" class="control-label required">Required score(35 to 100)%</label>
+			<input name="requiredscore" id=requiredscore type="number" step=0.1 min=35 max=100 class="form-control form  rounded-0"   required/>
+		</div>
+		<div class="form-group row">
+		    <div class="col-6">
+			<label for="maxsal" class="control-label required">From CTC</label>
+			<input name="maxsal" id="maxsal" type="number"  class="form-control form  rounded-0"   required/>
+		 </div>
+		 <div class="col-6">
+			<label for="minsal" class="control-label required">To CTC</label>
+			<input name="minsal" id="minsal" type="number" class="form-control form  rounded-0"   required/>
+		</div>
+			 
+		</div>
+		<br/>
+		<br/>
+		
+		<div class="row">
+		<h3>Applicapable to</h3> 
+	  
+		<h4>Courses</h4>
+		<br/>
+		<div class="row mb-3">
+		  <div th:each="d:${courses}">
+		   <div class="col-12">
+			<h5  class="control-label" th:text="${d.name}">To</h5>
+			<hr/>
+			 <div class="col-3" th:each="e:${d.branches}">
+			   <input name="branch[]"  type="checkbox" class="rounded-0" th:value="${e.id}"/>
+			   <label th:text="${e.name}"></label>
+			 </div>
+		 </div>
+		</div>
+		</div>
+		 
+		<h4>Academic Year</h4>
+		<hr/>
+		<div class="col-3" th:each="e:${academicyear}">
+			   <input name="academicyear[]"  type="checkbox" class="rounded-0" th:value="${e.id}"/>
+			   <label th:text="${e.name}"></label>
+			 </div>
+		
+		 
+		<h4>Skills</h4>
+		<hr/>
+		<div class="col-3" th:each="e:${skills}">
+			   <input name="skill[]"  type="checkbox" class="rounded-0" th:value="${e.id}"/>
+			   <label th:text="${e.name}"></label>
+			 </div>
+	
+			<h4>Rounds</h4>
+		<hr/>
+		<div class="col-3" th:each="e:${rounds}">
+			   <input name="placementrounds[]"  type="checkbox" class="rounded-0" th:value="${e.id}"/>
+			   <label th:text="${e.name}"></label>
+			 </div>
+					
+                </div>
+                <div class="row">
+                  <button type="submit"  class="btn btn-primary col-3 mt-5 m-auto" id="submit">Save</button>
+                   
+                </div>
+                </form> 
+                
+                </div> 
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+ 
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="admin/index :: footer"> 
+     
+     </footer>  
+     <script type="text/javascript" src="/assets/vendor/ckeditor/ckeditor.js"></script>
+  <script>
+			 CKEDITOR.replace( 'content' ); 
+			 $(document).ready(function () {   
+				 
+				 $( "#keycompany" ).autocomplete({
+		             	minLength: 2,
+		             	 select: function( event, ui ) {
+		             	        $('#company').val(ui.item.id);
+		             	      },
+		             	source: function( request, response ) {
+		                     $.ajax( {
+		                       url: "/admin/JSON/companies", 
+		                       method:"POST",
+		                       data: {
+		                     	  key: request.term, 
+		                           action:"search"
+		                       },
+		                       success: function( data ) {
+		                     	  response( data.data);
+		                       }
+		                     })
+		             	}
+		             });
+				 
+			      
+			      $("#modalform").off( "submit");
+				   $("#modalform").submit(function(e) {
+
+				      e.preventDefault(); // avoid to execute the actual submit of the form.
+				      if($('#content').val()=="")
+				    	  $('#content').val(CKEDITOR.instances.content.getData());
+				      var form = $(this);
+				      var url = form.attr('action'); 
+				      var data=form.serialize(); 
+				      $.ajax({
+				             type: "POST",
+				             url: $(this).attr("action"),  
+				             data:data , // serializes the form's elements.
+				   		    dataType: "json",
+				             success: function(data)
+				             {
+				   		      if(data.success)
+				                  {alert_toast(data.message,'success');  $("#formModal").modal('hide'); document.location.href="/admin/campusdrives"} // show response from the php script.
+				   			  else
+				   				  {
+				   				alert_toast(data.message,'error'); // show response from the php script.  
+				   				  }
+				   		  
+				   		      }
+				           });
+				   		     });  
+			    });
+			    
+			 </script>
+</body>
+
+</html>

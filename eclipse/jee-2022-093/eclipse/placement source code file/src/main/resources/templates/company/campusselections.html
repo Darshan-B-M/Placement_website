@@ -1,0 +1,233 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="company/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="company/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h2 class="m-0 font-weight-bold text-primary">Campuse Drive Selection(s)</h2>
+                   <span>Created by <span class='creator text-success h5'></span></span>
+                  </div>  
+                    
+                <div class="card-body">
+                        <form action="/company/JSON/campusdrives" id="modalform"  method="post"> 
+             	
+		<input type="hidden" name ="id" th:value="${id}">
+		<input type="hidden" name ="action" value="savecampusselections">
+<div class="form-group">
+							<label for="company" class="required">Company</label>
+						   <input type="text" name="keycompany" id="keycompany"  class="form-control rounded-0" readonly>
+						</div>
+		<div class="form-group">
+			<label  class="control-label required">Title</label>
+			<span  id="title" type="text" class="form-control form  rounded-0"></span>
+		</div> 
+	<div class="form-group row">
+	<div class="col-4">
+			<label  class="control-label required">Location:</label>
+			<span   id="location"  class="form-control form  rounded-0"></span>
+			</div>
+		     <div class="col-4">
+			<label   class="control-label required">Date:</label>
+			   <span   class="form-control form  rounded-0"><span  id="fromdate"></span> - 
+				<span   id="todate"></span> </span>
+		 </div> 
+		 <div class="col-4">
+		 	<label class="control-label required">Required score %:</label>
+			<span id=requiredscore   class="form-control form  rounded-0"></span>
+		</div>
+		</div>
+		<div class="row">
+		   <table class='table'>
+		      <thead>
+		      <tr>
+		        <th>#</th>
+		        <th>Name</th>
+		        <th>Score</th> 
+		        <th th:each="d:${rounds}" th:text="${d.round}"></th>
+		      </tr>
+		      </thead>
+		       <tfoot>
+		      <tr>
+		        <th>#</th>
+		        <th>Name</th>
+		        <th>Score</th> 
+		        <th th:each="d:${rounds}" th:text="${d.round}"></th>
+		      </tr>
+		      </tfoot>
+		      <tbody>
+		       <tr th:each="app:${applications}">
+		        <td th:text="${app.id}"></td>
+		        <td th:text="${app.name}"></td>
+		        <td th:text="${app.score}"></td>
+		          <td th:each="d:${rounds}">
+		            <input type="checkbox" th:name="${'placed['+app.id+']['+d.id+']'}" value=1>
+		          </td> 
+		          </tr> 
+		          </tbody>
+		          </table>
+		          </div>
+		 
+                <div class="row">
+                  <button type="submit"  class="btn btn-primary col-3 mt-5 m-auto" id="submit">Save</button>
+                </div>
+                </form> 
+                
+                </div> 
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+ 
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="company/index :: footer"> 
+     
+     </footer>   
+  <script>
+		
+			 $(document).ready(function () {   
+				 
+				 
+				 
+				 
+			      $("#modalform").off( "submit");
+				   $("#modalform").submit(function(e) {
+
+				      e.preventDefault(); // avoid to execute the actual submit of the form.
+				      if($('#content').val()=="")
+				    	  $('#content').val(CKEDITOR.instances.content.getData());
+				      var form = $(this);
+				      var url = form.attr('action'); 
+				      var data=form.serialize(); 
+				      $.ajax({
+				             type: "POST",
+				             url: $(this).attr("action"),  
+				             data:data , // serializes the form's elements.
+				   		    dataType: "json",
+				             success: function(data)
+				             {
+				   		      if(data.success)
+				                  {alert_toast(data.message,'success');  $("#formModal").modal('hide'); document.location.href="/company/campusdrives"} // show response from the php script.
+				   			  else
+				   				  {
+				   				alert_toast(data.message,'error'); // show response from the php script.  
+				   				  }
+				   		  
+				   		      }
+				           });
+				   		     });  
+				   loaddata();
+			    });
+			 function loaddata()
+			 {
+				 $('#ftco-loader').addClass('show');
+  		     	 $.ajax({
+   		             type: "POST",
+   		             url: "/company/JSON/campusdrives",  
+   		             data:{action:"read",id:$("[name=id]").val()} , // serializes the form's elements.
+   		   		    dataType: "json",
+   		             success: function(data)
+   		             {
+   		   		      if(data.success)
+   		   		    	  {   
+   		   		    	    tbranch=data.branches;
+   		   		    	    tacademicyear=data.academicyear;
+   		   		    	 tskills=data.skills;
+   		   		    	 trounds=data.rounds;
+   		   		    	    data=data.data;
+   		    	            $('#modalform #title').html(data.jobtitle);     
+   		    	            $('#modalform #location').html(data.location);  
+   		    	            $('#modalform #fromdate').html(formatdateshort(data.fromdate));  
+   		    	            $('#modalform #todate').html(formatdateshort(data.todate));   
+   		    	            $('#modalform #requiredscore').html(data.requiredscore);    
+   		   		    	    readcompany(data.company);
+   		   		            readcreator(data.creator);
+   		   		            readcampusselection(data.id);
+   		   		    	  }
+   		   		      else
+   		   		    	  {
+   		   		    alert_toast(data.message,'error');
+   		   		 $('#ftco-loader').removeClass('show');
+				      
+   		   		    	  }
+   		   		
+                  }
+
+		 	          });
+			 }
+			 
+			 function readcompany(id)
+			 {
+				 $.ajax({
+   		             type: "POST",
+   		             url: "/company/JSON/companies",  
+   		             data:{action:"read",id:id} , // serializes the form's elements.
+   		   		    dataType: "json",
+   		             success: function(data)
+   		             {
+   		   		      if(data.success)
+				     {
+   		   		    	  $("#company").val(data.data.id);
+   		   		    $("#keycompany").val(data.data.name+" - "+data.data.type);
+		   		    	  
+				     }
+   		   	
+   		             }
+				 });
+			 }
+			 function readcreator(id)
+			 {
+  		     	 $.ajax({
+   		             type: "POST",
+   		             url: "/company/JSON/readuser",  
+   		             data:{id:id} , // serializes the form's elements.
+   		   		    dataType: "json",
+   		             success: function(data)
+   		             {
+   		            	  if(data.success)
+   		            		  {
+   		            		    $(".creator").html(data.user);   		            		  
+   		            		  }
+   		            	 $('#ftco-loader').removeClass('show');
+   		             }
+  		     	 });
+   		             } 
+			 
+			 function readcampusselection(id)
+			 {
+  		     	 $.ajax({
+   		             type: "POST",
+   		             url: "/company/JSON/campusdrives",  
+   		             data:{action:"readcampusselections",id:id} , // serializes the form's elements.
+   		   		    dataType: "json",
+   		             success: function(data)
+   		             {
+   		            	  if(data.success)
+   		            		  {
+   		            		    data=data.applications;
+   		            		    for(i=0;i<data.length;i++)
+   		            		    	{
+   		            		    	 for(j=0;j<data[i].placed.length;j++)
+   		            		            if(+data[i].placed[j].status==1)	 
+   		            		    	       $('input[name="placed['+data[i].id+']['+data[i].placed[j].placementround+']"]').attr('checked',true);
+   		            		    	}
+   		            		  }
+   		            	 $('#ftco-loader').removeClass('show');
+   		             }
+  		     	 });
+   		             } 
+			    
+			 </script>
+</body>
+
+</html>

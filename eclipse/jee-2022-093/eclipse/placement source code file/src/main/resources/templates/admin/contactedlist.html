@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="admin/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="admin/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h2 class="m-0 font-weight-bold text-primary">Contact Us Messages</h2>
+        </div>
+         
+                <table class="table" id="listtab">
+  <thead>
+    <tr> 
+      <th scope="col">#</th> 
+      <th scope="col">Name</th> 
+       <th scope="col">Email</th> 
+       <th scope="col">Message</th> 
+      <th scope="col">Created</th> 
+      <th scope="col">IP</th>
+    </tr>
+  </thead>
+  <tbody>
+     
+  </tbody>
+</table>
+ <table class="table">
+   <tr><td><a class="prevpg d-none" href="#" onclick="loaddata(0)"> << Prev </a></td><td class="float-right"><a  onclick="loaddata(1)" class="nextpg" href="#"> Next >></a></td></tr>
+ </table>
+        </div>
+        </div>
+</section>
+ <!-- ======= Footer ======= -->
+     <footer  th:replace="admin/index :: footer">
+        
+     
+     </footer> 
+<script>
+$( function() {
+	   page=1;
+	   loaddata(0);
+	      
+});
+
+function loaddata(next)
+{ 
+	  $("#preloader").removeClass('d-none');
+	 
+	  if(next==1)
+		  page++;
+	  else
+		  page--;
+	  
+   $.ajax({ 
+          url: "/admin/JSON/loadcontactues/"+page,   
+		    dataType: "json",
+          success: function(data)
+          {
+		        if(data.success)
+		        	{
+		        	$("#listtab tbody").html("<h2>Loading.........</h2>");
+		        	var strhtml=""
+		        	data=data.data;
+		        	
+		        	if(data.length==5)
+		        	 { 
+		        		if(page>=1) 
+		        			{
+             		             $(".prevpg").removeClass("d-none"); 
+               		         $(".nextpg").removeClass("d-none"); 
+		        			} 
+		        		else
+		        			$(".nextpg").removeClass("d-none");  
+		        	 }
+		        	else
+		        	{  
+		        		   if(data.length<5) 
+		        			   $(".nextpg").addClass("d-none"); 
+		        		   if(page>=1) 
+		        			{
+            		             $(".prevpg").removeClass("d-none");  
+		        			} 
+		       		} 
+		        	 if(page==0) 
+	        			   $(".prevpg").addClass("d-none");
+		        	  
+		        	  for(var i=0;i<data.length;i++)
+		        		  {
+		        		     strhtml+="<tr>";
+		        		     strhtml+="<td>"+data[i].id+"</td>";
+		        		     strhtml+="<td>"+data[i].name+"</td>";  
+		        		     strhtml+="<td>"+data[i].email+"</td>";  
+		        		     strhtml+="<td>"+data[i].message+"</td>";  
+		        		     strhtml+="<td>"+data[i].creationtime+"</td>";   
+		        		     strhtml+="<td>"+data[i].ipaddress+"</td>";   
+		        		     strhtml+="</tr>";
+		        		  }
+		        	$("#listtab tbody").html(strhtml);
+		        	}
+		     $("#preloader").addClass('d-none');
+		      }
+        });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="company/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="company/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h2 class="m-0 font-weight-bold text-primary">Campuse Drives</h2>
+                   <div class="card-tools float-right">
+			<a href="/company/newcampusdrive" class="btn btn-flat btn-primary" id="create_new"><span class="fa fa-plus"></span>  Create New</a>
+		</div>
+                </div>
+               
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                    <thead class="thead-light">
+                      <tr> 
+                       <th>#</th> 
+                        <th>Title</th>  
+                         <th>Period</th>    
+                           <th>Selection(s)</th>   
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                         <th>#</th> 
+                            <th>Title</th>  
+                           <th>Period</th>
+                           <th>Selection(s)</th>   
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    
+                    </tbody>
+                     </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+ 
+ 
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="company/index :: footer">
+        
+     
+     </footer> 
+  <script type="text/javascript" src="/assets/vendor/ckeditor/ckeditor.js"></script>
+  <script>
+			 CKEDITOR.replace( 'content' ); 
+    $(document).ready(function () { 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+      
+      loaddata();
+       
+	   
+    });
+    
+    function loaddata()
+    {
+    	 $('#dataTableHover tbody').html("  <h1>Loading........</h1>"); 
+    	 $.ajax({
+             type: "POST",
+             url: "/company/JSON/campusdrives",  
+             data:{action:"readall"} , // serializes the form's elements.
+   		    dataType: "json",
+             success: function(data)
+             {
+   		      if(data.success)
+                  {
+   		    	    data=data.data;
+   		    	 if ( $.fn.DataTable.isDataTable('#dataTableHover') ) {
+   		    	  $('#dataTableHover').DataTable().destroy();
+   		    	}
+   		    	 strhtml="";
+   		    	    for(i=0;i<data.length;i++)
+   		    	    	{
+   		    	    	 strhtml+="<tr><td>"+ data[i].id+"</td><td>"+ data[i].jobtitle+(data[i].status==0?" - <span class='badge bg-danger'>Closed</span>":"") +"</td><td>"+formatdateshort(data[i].fromdate)+" to "+formatdateshort(data[i].todate)+"</td>"
+   		    	    	 strhtml+='<td class="text-center"><a href="/company/campusselections/'+data[i].id+'"><span class="fa fa-briefcase text-primary"></span></a></td>'
+	    	    		          +'<td><button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-bs-toggle="dropdown">'
+				                  +'Action<span class="sr-only">Toggle Dropdown</span></button>'
+				                  +'<div class="dropdown-menu" role="menu">'
+				                  +' <a class="dropdown-item edit_data" href="/company/editcampusdrive/'+data[i].id+'"><span class="fa fa-edit text-primary"></span> Edit</a>'
+				                  +' <div class="dropdown-divider"></div>'
+				                  +'  <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="'+data[i].id+'"><span class="fa fa-trash text-danger"></span> Delete</a>'
+				                  +'</div>'
+				                  +'</td>'
+   		    	    	          +'</tr>';
+   		    	    	}
+   		    	 $('#dataTableHover tbody').html(strhtml);
+   		    	$('#dataTableHover').DataTable();
+   		     $('.delete_data').click(function(){
+   				_conf("Are you sure to delete this Campuse Drive permanently?","delete_notice",[$(this).attr('data-id')])
+   			});
+   			
+ 
+                  }
+   		      else
+                  alert(data.message);
+   		  
+   		      }
+           });
+    }
+    
+    function delete_notice(id)
+    {
+    	 $.ajax({
+             type: "POST",
+             url: "/company/JSON/campusdrives",  
+             data:{action:"delete",id:id} , // serializes the form's elements.
+   		    dataType: "json",
+             success: function(data)
+             {
+   		      if(data.success)
+   		    	  {
+   		    	    alert_toast(data.message,'success');
+   		    	 $('#confirm_modal').modal('hide');
+   		            loaddata();    
+   		     	  }
+   		      else
+   		    	  {
+   		    	     alert_toast(data.message,'error'); 
+   		    	  }
+             }
+    	 });
+    }
+    
+    
+  </script>
+
+</body>
+
+</html>

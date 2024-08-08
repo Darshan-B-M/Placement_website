@@ -1,0 +1,663 @@
+Manifest-Version: 1.0
+Bundle-Description: logback-classic module
+Bundle-License: http://www.eclipse.org/legal/epl-v10.html, http://www.
+ gnu.org/licenses/old-licenses/lgpl-2.1.html
+Bundle-SymbolicName: ch.qos.logback.classic
+Archiver-Version: Plexus Archiver
+Built-By: genie.orbit
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-DocURL: http://www.qos.ch
+Bundle-Vendor: %bundleVendor
+Import-Package: javax.servlet;version="[2.6,4)";resolution:=optional,j
+ avax.servlet.http;version="[2.6,4)";resolution:=optional,ch.qos.logba
+ ck.classic;version="[1.1.2,1.2)",ch.qos.logback.classic.boolex;versio
+ n="[1.1.2,1.2)",ch.qos.logback.classic.db.names;version="[1.1.2,1.2)"
+ ,ch.qos.logback.classic.encoder;version="[1.1.2,1.2)",ch.qos.logback.
+ classic.gaffer;version="[1.1.2,1.2)",ch.qos.logback.classic.jmx;versi
+ on="[1.1.2,1.2)",ch.qos.logback.classic.joran;version="[1.1.2,1.2)",c
+ h.qos.logback.classic.joran.action;version="[1.1.2,1.2)",ch.qos.logba
+ ck.classic.net;version="[1.1.2,1.2)",ch.qos.logback.classic.pattern;v
+ ersion="[1.1.2,1.2)",ch.qos.logback.classic.pattern.color;version="[1
+ .1.2,1.2)",ch.qos.logback.classic.selector;version="[1.1.2,1.2)",ch.q
+ os.logback.classic.sift;version="[1.1.2,1.2)",ch.qos.logback.classic.
+ spi;version="[1.1.2,1.2)",ch.qos.logback.classic.turbo;version="[1.1.
+ 2,1.2)",ch.qos.logback.classic.util;version="[1.1.2,1.2)",ch.qos.logb
+ ack.core;version="[1.1.2,1.2)",ch.qos.logback.core.boolex;version="[1
+ .1.2,1.2)",ch.qos.logback.core.db;version="[1.1.2,1.2)",ch.qos.logbac
+ k.core.encoder;version="[1.1.2,1.2)",ch.qos.logback.core.filter;versi
+ on="[1.1.2,1.2)",ch.qos.logback.core.helpers;version="[1.1.2,1.2)",ch
+ .qos.logback.core.html;version="[1.1.2,1.2)",ch.qos.logback.core.jora
+ n;version="[1.1.2,1.2)",ch.qos.logback.core.joran.action;version="[1.
+ 1.2,1.2)",ch.qos.logback.core.joran.conditional;version="[1.1.2,1.2)"
+ ,ch.qos.logback.core.joran.event;version="[1.1.2,1.2)",ch.qos.logback
+ .core.joran.spi;version="[1.1.2,1.2)",ch.qos.logback.core.joran.util;
+ version="[1.1.2,1.2)",ch.qos.logback.core.net;version="[1.1.2,1.2)",c
+ h.qos.logback.core.net.server;version="[1.1.2,1.2)",ch.qos.logback.co
+ re.net.ssl;version="[1.1.2,1.2)",ch.qos.logback.core.pattern;version=
+ "[1.1.2,1.2)",ch.qos.logback.core.pattern.color;version="[1.1.2,1.2)"
+ ,ch.qos.logback.core.pattern.parser;version="[1.1.2,1.2)",ch.qos.logb
+ ack.core.sift;version="[1.1.2,1.2)",ch.qos.logback.core.spi;version="
+ [1.1.2,1.2)",ch.qos.logback.core.status;version="[1.1.2,1.2)",ch.qos.
+ logback.core.util;version="[1.1.2,1.2)",org.slf4j.spi;version="[1.7.1
+ 0,1.8)",org.slf4j;version="[1.7,2)",org.slf4j.helpers;version="[1.7,2
+ )",groovy.lang;resolution:=optional,javax.jms;resolution:=optional,ja
+ vax.management;resolution:=optional,javax.naming;resolution:=optional
+ ,javax.net;resolution:=optional,javax.net.ssl;resolution:=optional,or
+ g.codehaus.groovy.control;resolution:=optional,org.codehaus.groovy.co
+ ntrol.customizers;resolution:=optional,org.codehaus.groovy.reflection
+ ;resolution:=optional,org.codehaus.groovy.runtime;resolution:=optiona
+ l,org.codehaus.groovy.runtime.callsite;resolution:=optional,org.codeh
+ aus.groovy.runtime.typehandling;resolution:=optional,org.codehaus.gro
+ ovy.runtime.wrappers;resolution:=optional,org.xml.sax;resolution:=opt
+ ional,sun.reflect;resolution:=optional,ch.qos.logback.core.rolling;ve
+ rsion="[1.1.2,1.2)",ch.qos.logback.core.rolling.helper;version="[1.1.
+ 2,1.2)",ch.qos.logback.core.read;version="[1.1.2,1.2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.5))"
+Originally-Created-By: 1.6.0_22 (Sun Microsystems Inc.)
+Export-Package: ch.qos.logback.classic;version="1.1.2";uses:="ch.qos.l
+ ogback.classic.spi,ch.qos.logback.classic.turbo,ch.qos.logback.core,c
+ h.qos.logback.core.pattern,ch.qos.logback.core.spi,ch.qos.logback.cor
+ e.status,javax.servlet.http,org.slf4j,org.slf4j.spi",ch.qos.logback.c
+ lassic.boolex;version="1.1.2";uses:="ch.qos.logback.classic.spi,ch.qo
+ s.logback.core.boolex,groovy.lang",ch.qos.logback.classic.db;version=
+ "1.1.2";uses:="ch.qos.logback.classic.db.names,ch.qos.logback.classic
+ .spi,ch.qos.logback.core.db",ch.qos.logback.classic.db.names;version=
+ "1.1.2",ch.qos.logback.classic.encoder;version="1.1.2";uses:="ch.qos.
+ logback.classic.spi,ch.qos.logback.core.pattern",ch.qos.logback.class
+ ic.filter;version="1.1.2";uses:="ch.qos.logback.classic,ch.qos.logbac
+ k.classic.spi,ch.qos.logback.core.filter,ch.qos.logback.core.spi",ch.
+ qos.logback.classic.gaffer;version="1.1.2";uses:="ch.qos.logback.clas
+ sic,ch.qos.logback.core,ch.qos.logback.core.spi,ch.qos.logback.core.s
+ tatus,groovy.lang,org.codehaus.groovy.control.customizers",ch.qos.log
+ back.classic.helpers;version="1.1.2";uses:="javax.servlet",ch.qos.log
+ back.classic.html;version="1.1.2";uses:="ch.qos.logback.classic.spi,c
+ h.qos.logback.core.html,ch.qos.logback.core.pattern",ch.qos.logback.c
+ lassic.jmx;version="1.1.2";uses:="ch.qos.logback.classic,ch.qos.logba
+ ck.classic.spi,ch.qos.logback.core,ch.qos.logback.core.joran.spi,ch.q
+ os.logback.core.spi,javax.management",ch.qos.logback.classic.joran;ve
+ rsion="1.1.2";uses:="ch.qos.logback.core.joran,ch.qos.logback.core.jo
+ ran.spi",ch.qos.logback.classic.joran.action;version="1.1.2";uses:="c
+ h.qos.logback.core.joran.action,ch.qos.logback.core.joran.spi,org.xml
+ .sax",ch.qos.logback.classic.jul;version="1.1.2";uses:="ch.qos.logbac
+ k.classic,ch.qos.logback.classic.spi,ch.qos.logback.core.spi",ch.qos.
+ logback.classic.log4j;version="1.1.2";uses:="ch.qos.logback.classic.s
+ pi,ch.qos.logback.core",ch.qos.logback.classic.net;version="1.1.2";us
+ es:="ch.qos.logback.classic,ch.qos.logback.classic.spi,ch.qos.logback
+ .core,ch.qos.logback.core.boolex,ch.qos.logback.core.helpers,ch.qos.l
+ ogback.core.joran.spi,ch.qos.logback.core.net,ch.qos.logback.core.net
+ .ssl,ch.qos.logback.core.pattern,ch.qos.logback.core.spi,javax.jms,ja
+ vax.naming,javax.net,javax.net.ssl",ch.qos.logback.classic.net.server
+ ;version="1.1.2";uses:="ch.qos.logback.classic.net,ch.qos.logback.cla
+ ssic.spi,ch.qos.logback.core.net.server,ch.qos.logback.core.net.ssl,c
+ h.qos.logback.core.spi,javax.net",ch.qos.logback.classic.pattern;vers
+ ion="1.1.2";uses:="ch.qos.logback.classic.spi,ch.qos.logback.core.pat
+ tern,org.slf4j",ch.qos.logback.classic.pattern.color;version="1.1.2";
+ uses:="ch.qos.logback.classic.spi,ch.qos.logback.core.pattern.color",
+ ch.qos.logback.classic.selector;version="1.1.2";uses:="ch.qos.logback
+ .classic",ch.qos.logback.classic.selector.servlet;version="1.1.2";use
+ s:="javax.servlet",ch.qos.logback.classic.sift;version="1.1.2";uses:=
+ "ch.qos.logback.classic.spi,ch.qos.logback.core,ch.qos.logback.core.j
+ oran.action,ch.qos.logback.core.joran.event,ch.qos.logback.core.joran
+ .spi,ch.qos.logback.core.sift,org.xml.sax",ch.qos.logback.classic.spi
+ ;version="1.1.2";uses:="ch.qos.logback.classic,ch.qos.logback.classic
+ .turbo,ch.qos.logback.core,ch.qos.logback.core.spi,org.slf4j",ch.qos.
+ logback.classic.turbo;version="1.1.2";uses:="ch.qos.logback.classic,c
+ h.qos.logback.core.spi,org.slf4j",ch.qos.logback.classic.util;version
+ ="1.1.2";uses:="ch.qos.logback.classic,ch.qos.logback.classic.selecto
+ r,ch.qos.logback.classic.spi,ch.qos.logback.core.joran.spi,javax.nami
+ ng,org.slf4j.spi"
+Bundle-Name: %bundleName
+Bundle-Version: 1.1.2.v20171220-1825
+Created-By: Eclipse Bundle Recipe Maven Plug-in
+Build-Jdk: 1.8.0_131
+
+Name: ch/qos/logback/classic/joran/action/ConsolePluginAction.class
+SHA-256-Digest: 4LRtLQZlFiR5NbENXLPqxSZ8RqGYt51lDA+zBjrrQ7s=
+
+Name: ch/qos/logback/classic/util/LevelToSyslogSeverity.class
+SHA-256-Digest: f12r5EKTN7i59QvcpQXSYZ8OHsj3dR8gfX1oVdevx9g=
+
+Name: ch/qos/logback/classic/spi/ClassPackagingData.class
+SHA-256-Digest: kZvbsWNiZrzk2RYH71wk6WG0OkFNsk5CgYf3t3s6UnA=
+
+Name: ch/qos/logback/classic/joran/action/ConfigurationAction.class
+SHA-256-Digest: 8HZGRWjX8fqPYdBbuVkPbWfEid0Nd5ds6DVxIq3eMGA=
+
+Name: ch/qos/logback/classic/joran/action/EvaluatorAction.class
+SHA-256-Digest: Srr2x+GmS+FMgqqOp7zmBTjNpRG7QP8JN92dCQMRD6E=
+
+Name: ch/qos/logback/classic/spi/StackTraceElementProxy.class
+SHA-256-Digest: kSynXfZrlz9M3kzLZdbn6KSmWB8CAsxj2RRTrO6w08g=
+
+Name: ch/qos/logback/classic/sift/ContextBasedDiscriminator.class
+SHA-256-Digest: OLq0Kxdcm1/AczAFmhS5l9DucMzZjTkPJNQHkQvdn+U=
+
+Name: ch/qos/logback/classic/gaffer/ConfigurationDelegate$_copyContrib
+ utions_closure2.class
+SHA-256-Digest: BjiSD7q+skIeUrI7xizawOcUUxrlDMcMvFsYofolH/8=
+
+Name: ch/qos/logback/classic/pattern/RootCauseFirstThrowableProxyConve
+ rter.class
+SHA-256-Digest: ZIfwO60MTYnjWn4PQNRNB2Gqs+8DxaCUpHliY2uNUSo=
+
+Name: ch/qos/logback/classic/spi/LoggerContextAware.class
+SHA-256-Digest: +NxBP+bjmhWMUN+Z7is4x6ugtOORsPOKo7n9nGIlr/U=
+
+Name: ch/qos/logback/classic/gaffer/ConfigurationContributor.class
+SHA-256-Digest: 10+me3j6UX+8BHdhaUKNzII9zfQ9pyWDBy8/v0KsuPQ=
+
+Name: ch/qos/logback/classic/net/SocketReceiver.class
+SHA-256-Digest: SwDbU09ysZax80dnHUQMPGpi8k0U0W+NQo+EPfiKwzg=
+
+Name: ch/qos/logback/classic/selector/servlet/LoggerContextFilter.clas
+ s
+SHA-256-Digest: 7NuwsZO7QROiAlDvu2dRFEzPpqwGLwwOAvybHFtp+RI=
+
+Name: ch/qos/logback/classic/turbo/MarkerFilter.class
+SHA-256-Digest: +iEsEC8oZjZ8hYnFm5SzVvHfXPvkmoCm9gsgMFNgFHo=
+
+Name: ch/qos/logback/classic/db/SQLBuilder.class
+SHA-256-Digest: uWXPbni4CWpXq0qdCq8VDxOS/cWm2y1XYDXthCTNDvQ=
+
+Name: ch/qos/logback/classic/Level.class
+SHA-256-Digest: 8gP2gHcHQVftR0L0+GBRJpODGco82dv7Kk5WpRqPYRc=
+
+Name: ch/qos/logback/classic/boolex/GEventEvaluator.class
+SHA-256-Digest: rkqUT/oOjjbxb3GVFRm0k6IaxoK9G5tgcwnZk1eShz0=
+
+Name: ch/qos/logback/classic/joran/action/InsertFromJNDIAction.class
+SHA-256-Digest: /Y1z/2MjjkZCmxtdxkRGyfh22/T9Zez77u4DgaGEFYM=
+
+Name: ch/qos/logback/classic/util/ContextSelectorStaticBinder.class
+SHA-256-Digest: U3oFoS1Idh66+Q1orNnSVcFCDeUAejjWIu3LDiUoi9U=
+
+Name: ch/qos/logback/classic/joran/action/ContextNameAction.class
+SHA-256-Digest: AA9o42za7shsOQXmABnf1ad9HeNohHUqtxASLv43OU4=
+
+Name: ch/qos/logback/classic/net/server/ServerSocketReceiver.class
+SHA-256-Digest: YGrr4UsY4O7AA3Bd08cWw81+0a0/JU2p8LfZXnMwTQM=
+
+Name: ch/qos/logback/classic/turbo/MDCFilter.class
+SHA-256-Digest: s5o5jmEiVQgr8flJ5Lec3Ncc+B+lRmKgBjZ5XWsQ2s4=
+
+Name: ch/qos/logback/classic/joran/action/ReceiverAction.class
+SHA-256-Digest: JI/MoX0mkMEoIjrqnsdjnDpjuQMhyV0Hnr5WfWpzCFA=
+
+Name: ch/qos/logback/classic/net/SSLSocketReceiver.class
+SHA-256-Digest: d0imMMit1zavlpfDVo5h/VLrOwc9lcreT7fbaGrgvrA=
+
+Name: ch/qos/logback/classic/encoder/PatternLayoutEncoder.class
+SHA-256-Digest: /6givaT35UdP4b2Sn/6sBDGC/ZX+Ob4rxvKBgAWdkKc=
+
+Name: ch/qos/logback/classic/ViewStatusMessagesServlet.class
+SHA-256-Digest: CjJmdFoTZrXQ+rsqe1Opu7FuskqfItYKKZy43pNAm88=
+
+Name: ch/qos/logback/classic/spi/TurboFilterList.class
+SHA-256-Digest: bETx8p5angX304pAiGvL5cJ7VVdNkKgNc2bm21U7DaY=
+
+Name: ch/qos/logback/classic/ClassicConstants.class
+SHA-256-Digest: qfUBuUhPqE55HqE5XORj0e0O7LyRwou3GvxG9uuChTs=
+
+Name: ch/qos/logback/classic/PatternLayout.class
+SHA-256-Digest: HpkXO4Id94awtNxsE52jKhb/lLeY7KDa0Hr2bt/y3CY=
+
+Name: ch/qos/logback/classic/pattern/LoggerConverter.class
+SHA-256-Digest: mxOqx4yGtB7UdMa/Fdpx3H0rRoxzcSF3hdkSeixfDnk=
+
+Name: ch/qos/logback/classic/spi/ThrowableProxyVO.class
+SHA-256-Digest: GZ2nkS+uHnXlzt+qKo2uvuPjzg0AYpxv1ipP9n7jO5I=
+
+Name: ch/qos/logback/classic/pattern/Util.class
+SHA-256-Digest: QGUvuwPt53p5LNgxQQoy6IpZj8SS+xN052w3ALPcJE0=
+
+Name: ch/qos/logback/classic/db/names/DefaultDBNameResolver.class
+SHA-256-Digest: gD47sckIl2hZvi06k9TqTwEBHm2uebyod2wSi4DAe4Y=
+
+Name: ch/qos/logback/classic/net/server/RemoteAppenderServerListener.c
+ lass
+SHA-256-Digest: 89AHUfo13IIzOQu/J+YpeNwcES5ZTdYxtHszhuZQnuk=
+
+Name: ch/qos/logback/classic/Logger.class
+SHA-256-Digest: hQd+rc4ejpzVepg+sYKIR1RtunWjGCjFtdPYRDX+bZ8=
+
+Name: ch/qos/logback/classic/db/names/TableName.class
+SHA-256-Digest: n5+EtNtIfvHnqqrOES3NwLHOS7lqfsnGybYUFEGY+5Y=
+
+Name: ch/qos/logback/classic/spi/LoggerContextVO.class
+SHA-256-Digest: W9qcca1EqoTgiyzrbCHzM+/xBoA5VZJRtCBMdnCnb88=
+
+Name: ch/qos/logback/classic/sift/MDCBasedDiscriminator.class
+SHA-256-Digest: 3FiKsAQI8mlssLaN7W1bxf5tHnv4KIkLnmY5GcQ+5B8=
+
+Name: META-INF/maven/org.eclipse.orbit.bundles/ch.qos.logback.classic/
+ pom.properties
+SHA-256-Digest: jiCyJp8NRUXnfLKpioaazVMtVt56oBBJumK99911O9U=
+
+Name: ch/qos/logback/classic/gaffer/PropertyUtil$_upperCaseFirstLetter
+ _closure1.class
+SHA-256-Digest: qSJJ6txoHtl78v0Uv3zCVjeAMfnTfoh2q/VA7rGc5RM=
+
+Name: ch/qos/logback/classic/AsyncAppender.class
+SHA-256-Digest: 6Mxn2J7WOFjKYToho6DjASofUgQqj7C8WfhymsD0lIs=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA-256-Digest: wCjv9+0D5c339kULxxKAO2Drw4WcLjNgbm62wQF39H4=
+
+Name: ch/qos/logback/classic/db/names/ColumnName.class
+SHA-256-Digest: SS4QwOC84ouoV0tdFEXntCxuItLEHs11rQsV3Omze7U=
+
+Name: ch/qos/logback/classic/pattern/ThrowableHandlingConverter.class
+SHA-256-Digest: UwJUKfO8YiXhj5EFmOJ/vdJdgzpjYtZkq6Njr7YlGjE=
+
+Name: ch/qos/logback/classic/boolex/OnErrorEvaluator.class
+SHA-256-Digest: M2WxwPaIE0T4eY8JzwC8Nt1OMPI29TBXdbJLWtGle44=
+
+Name: ch/qos/logback/classic/spi/LoggerContextAwareBase.class
+SHA-256-Digest: V5OHg5TucMbpH3KJpKKW6Td75aHGTXkb6ziy7XQ8EOE=
+
+Name: ch/qos/logback/classic/jul/JULHelper.class
+SHA-256-Digest: 8QOihJ/SzEnS2wvmyPtUF5dJW18MMs0nPhT2VyzCORs=
+
+Name: ch/qos/logback/classic/sift/AppenderFactoryUsingJoran.class
+SHA-256-Digest: l9Efsr7hpd49MLlt9WShHXq4+BPFBBWwApOsCIrEpao=
+
+Name: ch/qos/logback/classic/util/DefaultNestedComponentRules.class
+SHA-256-Digest: Bfk0zOOy+65+beLz6eNr9oQtgWQW4CGT3CO4YLC01c4=
+
+Name: ch/qos/logback/classic/pattern/FileOfCallerConverter.class
+SHA-256-Digest: Ya2qMbos0TQ6YFjpwiWK+KTm9qC2w2PR0P4XOxvNo6M=
+
+Name: ch/qos/logback/classic/sift/SiftAction.class
+SHA-256-Digest: UCTTYg8PBUoY5xjq5cyMLwGgQ7apcbbjzr8UjYLTohg=
+
+Name: ch/qos/logback/classic/spi/LoggingEventVO.class
+SHA-256-Digest: /FH8BEb+DngaqgxkMiICURmm+69UkWisdc24ukPcZxs=
+
+Name: ch/qos/logback/classic/net/server/RemoteAppenderClient.class
+SHA-256-Digest: 4gfSH67dioAx82mgwcZ93EH8kS6ZATJ10WUpCnFUT+Q=
+
+Name: ch/qos/logback/classic/gaffer/GafferConfigurator$_run_closure1.c
+ lass
+SHA-256-Digest: Nh0Z8udQWRrVDOv4ybZScrySZRjMVjhEJZllyKC7BRM=
+
+Name: META-INF/maven/org.eclipse.orbit.bundles/ch.qos.logback.classic/
+ pom.xml
+SHA-256-Digest: ig0HS+1UJfo2A1YogmHyDlClim4Ou+HtmB+GXFZMdOE=
+
+Name: ch/qos/logback/classic/pattern/NamedConverter.class
+SHA-256-Digest: IfkapBWvLvSTz1XeXb4A35edBfGHjSPChz9CqVOBmUg=
+
+Name: ch/qos/logback/classic/net/SMTPAppender.class
+SHA-256-Digest: Z4ubB5lg6xRSrvQrs+SB7foFv+w/m4ieI0EkCDex+G0=
+
+Name: ch/qos/logback/classic/db/DBAppender.class
+SHA-256-Digest: 3rgHrCfbXF0T1t+iXWg6VYv5+KyERij/hBdW6bMEW6E=
+
+Name: ch/qos/logback/classic/pattern/ClassNameOnlyAbbreviator.class
+SHA-256-Digest: satTqQ6DT0MI7xAYVURAiGC/XdMbcU1FLQSP6tVo6Hg=
+
+Name: ch/qos/logback/classic/net/SimpleSSLSocketServer.class
+SHA-256-Digest: ZKr3zZM7P+dHiMScPPV4U7gNNXeaRrA/7AR9TArm+kE=
+
+Name: ch/qos/logback/classic/spi/PackagingDataCalculator.class
+SHA-256-Digest: sEkBNSIyg8I81CFBriV/SZdDaWWIUA3bCHItLn1iz2c=
+
+Name: ch/qos/logback/classic/gaffer/AsyncAppenderDelegate.class
+SHA-256-Digest: c9CHAYZPYNoXNO+6G/Gy3Y3/shE5oCtfG34keGf2rac=
+
+Name: ch/qos/logback/classic/pattern/DateConverter.class
+SHA-256-Digest: wNOYkEp5OPgYmu137YL0c2JETv6ScZ2xw4zF0KbQ7rQ=
+
+Name: ch/qos/logback/classic/spi/STEUtil.class
+SHA-256-Digest: /NZRPbnrY+p5RkfGLy3WHL/UoucJ/S9yBQ8ZJA4Qd2M=
+
+Name: ch/qos/logback/classic/LoggerContext.class
+SHA-256-Digest: u3CaAroYG4IVQtfJMWPd6bsI4NjGGs+ZrYy+DS2bgq0=
+
+Name: ch/qos/logback/classic/joran/JoranConfigurator.class
+SHA-256-Digest: iKKY+j7/NKF+PNDKz2djG/pff7GUlb0F7HNBwH+IeBg=
+
+Name: ch/qos/logback/classic/pattern/SyslogStartConverter.class
+SHA-256-Digest: DLrHbbo9jVN7MnWLM9MHqnoNQiubxdbaeIkNVdZEni0=
+
+Name: ch/qos/logback/classic/util/LogbackMDCAdapter.class
+SHA-256-Digest: 4LFFMASezuFBm0wOQxkT8fDLfK8lNu311Y8n7CSwTPA=
+
+Name: ch/qos/logback/classic/boolex/JaninoEventEvaluator.class
+SHA-256-Digest: mkbhrLZbgQJFDHIltbJjwpdEcCsoOYmQrq79r9XCab8=
+
+Name: ch/qos/logback/classic/log4j/XMLLayout.class
+SHA-256-Digest: lt+OxyvLnDRzG1BDqbINk3guEKRT1n8A/JXrMkeSiJo=
+
+Name: ch/qos/logback/classic/joran/action/RootLoggerAction.class
+SHA-256-Digest: oZxuDs4DTLDmggVSmfK6r7LQ/aY9BeDmsx8XzialYyk=
+
+Name: ch/qos/logback/classic/net/SocketAppender.class
+SHA-256-Digest: uB9zGMpCWEzQCH8uwoFf+nX0O1PlU1AvoBzoOEADiwc=
+
+Name: ch/qos/logback/classic/util/JNDIUtil.class
+SHA-256-Digest: D3dryNFSkyjqvUbbHuNmAqtpFeakVwnFZofe6XzBGJM=
+
+Name: ch/qos/logback/classic/gaffer/AsyncAppenderDelegate$_closure1.cl
+ ass
+SHA-256-Digest: M5Y3Xt4AVfInZuMC0z0PUy444Xyrm5X0G27nBi4dQIE=
+
+Name: ch/qos/logback/classic/html/HTMLLayout.class
+SHA-256-Digest: EsCtFCiFlW7UQjPJ3tQTWbI4oD6VDjCOF2er0f0O6l8=
+
+Name: ch/qos/logback/classic/joran/action/LoggerAction.class
+SHA-256-Digest: 2EXRAxqQ4u2sf5ypEgwJZuVCala3dbapXt1EvsAtm/M=
+
+Name: ch/qos/logback/classic/pattern/RelativeTimeConverter.class
+SHA-256-Digest: QT9P5DJ1xyfAjl1GA3KRpo3BHG8v33Ms50Cwf1+V3yM=
+
+Name: ch/qos/logback/classic/BasicConfigurator.class
+SHA-256-Digest: A4A/fcOPNvHVAoekJP1vJfpRS1FTThb5EKrYIUZ1W5c=
+
+Name: ch/qos/logback/classic/selector/ContextSelector.class
+SHA-256-Digest: oUA1VlRkxi1gUqXba0fOgN/TVafh77OVXoEJEF5nseA=
+
+Name: ch/qos/logback/classic/jul/LevelChangePropagator.class
+SHA-256-Digest: 2p25m16lnucu1JjThpvWsQWYaXecVjNJ5VvzirucRQs=
+
+Name: ch/qos/logback/classic/html/DefaultThrowableRenderer.class
+SHA-256-Digest: MMdAXD/sTRUaCzlngslxN0+BfWrShqnLMQW92zf2v28=
+
+Name: ch/qos/logback/classic/net/LoggingEventPreSerializationTransform
+ er.class
+SHA-256-Digest: d8Oix+p0bfurw3uzFG9Wv/Ceo5a0W9+eXxJ+HCRq1c4=
+
+Name: about_files/ECLIPSE_PUBLIC_LICENSE.html
+SHA-256-Digest: pAdBtZNkzElEklXpub/h/P5qLnq003yonbO6y/sU6dI=
+
+Name: ch/qos/logback/classic/spi/CallerData.class
+SHA-256-Digest: oAgJsbsOe2I7nMFmeFeU0kTYmSpGSQmR9neaBEa6d0k=
+
+Name: ch/qos/logback/classic/spi/LoggerComparator.class
+SHA-256-Digest: e63pPzSRN5+Fvvks/eq7ndSXvlI+FquJhX+1gOJHdsU=
+
+Name: ch/qos/logback/classic/gaffer/NestingType.class
+SHA-256-Digest: JG/8ii4327xhb3buth4PuNWhGn0z+aMBn5FA6A9nnag=
+
+Name: ch/qos/logback/classic/spi/ThrowableProxy.class
+SHA-256-Digest: rjoQ3klRgVNmhOCroqTG9wZrHrJqN6gbn+nEDE68S3g=
+
+Name: ch/qos/logback/classic/net/server/SSLServerSocketReceiver.class
+SHA-256-Digest: RIjfpodkXQJIxwwo9Lm3s8380Pgn9bAzUxrcjMhuf84=
+
+Name: ch/qos/logback/classic/spi/LoggerContextListener.class
+SHA-256-Digest: XjutCNdIPCObMJgLH9+c393tuRX49+SHIS1ibNT5C0o=
+
+Name: ch/qos/logback/classic/turbo/MDCValueLevelPair.class
+SHA-256-Digest: w+vWnJSgSf8MiVjNxYcnMREMAslVYhhXFotGo4pPt/I=
+
+Name: ch/qos/logback/classic/net/JMSQueueSink.class
+SHA-256-Digest: qO5mLNPRAMQkAPOOMclZTpQ4ETN2VbZzKPKOxNsjZeE=
+
+Name: ch/qos/logback/classic/pattern/ExtendedThrowableProxyConverter.c
+ lass
+SHA-256-Digest: GFghX1ytT7S9OFyuFrYgY1JgJu9lRTpQZlgEOwrcu0w=
+
+Name: ch/qos/logback/classic/jmx/JMXConfigurator.class
+SHA-256-Digest: fQ/RmmT8sN9XrKAwUlQ7He+OGPncGlx+E3hXxLQhE+M=
+
+Name: ch/qos/logback/classic/gaffer/ComponentDelegate.class
+SHA-256-Digest: 4A1bgdDor+7+G0QFqTD8SHZDRsEwp+2CKvnTxufSKAk=
+
+Name: ch/qos/logback/classic/pattern/NopThrowableInformationConverter.
+ class
+SHA-256-Digest: Np11fUiW1lDQwfS7waSkiq+k+X48nWLDEf/m5W+NbZw=
+
+Name: ch/qos/logback/classic/gaffer/AppenderDelegate.class
+SHA-256-Digest: +rcXsO1uaM8Z09MoU0Ul7fDVDsfWQlih+MmydJnTLnQ=
+
+Name: ch/qos/logback/classic/pattern/ClassicConverter.class
+SHA-256-Digest: SafDVoDuNEvbelc5BqAt4y2or3BPMcuUeulRY1s815c=
+
+Name: ch/qos/logback/classic/util/EnvUtil.class
+SHA-256-Digest: IwvG2gNw8INf9OnBB0Q5OaBlMOe2uHyNBRu4LDFzbsU=
+
+Name: ch/qos/logback/classic/net/SyslogAppender.class
+SHA-256-Digest: BENVzgZP3fdTkJWtb0WrC5RMLIFu6SmXW39cZJCDWgU=
+
+Name: ch/qos/logback/classic/util/ContextInitializer.class
+SHA-256-Digest: IrEXsjRWe48J/DBXKlh/u3untu6LnPr5zGkFJaXozmU=
+
+Name: ch/qos/logback/classic/html/UrlCssBuilder.class
+SHA-256-Digest: oBdUkrN9gdsG0T0Gp0AKcuxSsVpR12kFvbI6uo5Sxko=
+
+Name: ch/qos/logback/classic/spi/IThrowableProxy.class
+SHA-256-Digest: 1jOyqxTASt3y+OvGSkCLa3PFMcsYMjyN8OOvFYGMJFI=
+
+Name: ch/qos/logback/classic/db/names/DBNameResolver.class
+SHA-256-Digest: Vq49MXzRDEZyH3h5xeLrLOCVhRX1O04hOhJu1Z6yOLQ=
+
+Name: ch/qos/logback/classic/net/JMSTopicAppender.class
+SHA-256-Digest: oJIwLQupnq6usSrwDjeuwypJHTsyha97u7sojDLbGFc=
+
+Name: ch/qos/logback/classic/util/LoggerNameUtil.class
+SHA-256-Digest: 6pmD3dbA88RMuOQj5fYv9qpGo81X9r+b7RcnRKY9a3M=
+
+Name: ch/qos/logback/classic/net/server/RemoteAppenderStreamClient.cla
+ ss
+SHA-256-Digest: hb6I1sXd+th7XpC5fcIWzOONuH/G/s3JF9R9MxQUjvM=
+
+Name: ch/qos/logback/classic/net/JMSQueueAppender.class
+SHA-256-Digest: Wr13CKWuRCvMgjy4yvkHMjsUwoQz96WzPK8irc53b64=
+
+Name: ch/qos/logback/classic/sift/SiftingAppender.class
+SHA-256-Digest: 1O/nzAhWA45+vEZoRLO55RlPp/QvbBcIk9Dja5O6f1s=
+
+Name: ch/qos/logback/classic/joran/action/JMXConfiguratorAction.class
+SHA-256-Digest: qQIIu3grdOaWL38ew0IIFPwLzfvIC+Bij1/grCQ1EBg=
+
+Name: ch/qos/logback/classic/pattern/ClassOfCallerConverter.class
+SHA-256-Digest: JLeEsZ7hrcciO8wpsaV27YZwkLbVQTs820H00sonZ8E=
+
+Name: ch/qos/logback/classic/selector/servlet/ContextDetachingSCL.clas
+ s
+SHA-256-Digest: gnOgua1FlBhvjTGSMnUToEzDNNyIWWw7Q/5o/K05quU=
+
+Name: ch/qos/logback/classic/turbo/DuplicateMessageFilter.class
+SHA-256-Digest: DStNSVc8iiuUxoHCkGxR0Go5H46ij+iMvDJSCamRc+E=
+
+Name: ch/qos/logback/classic/gaffer/GafferUtil.class
+SHA-256-Digest: jP3kuDO4HkT8K4ev2+8qkmeZghcoPpyixkbDGKL3zu8=
+
+Name: ch/qos/logback/classic/spi/EventArgUtil.class
+SHA-256-Digest: StfOfN1UZi2J8XoJAlJvx1Oy1n9Ii5FbJoRm0RhNvJo=
+
+Name: ch/qos/logback/classic/boolex/EvaluatorTemplate.groovy
+SHA-256-Digest: F+c2qaBN8s6//Xmikf5pt2h4yjv0enlI10+oR0vl3+Y=
+
+Name: ch/qos/logback/classic/filter/ThresholdFilter.class
+SHA-256-Digest: zFEBA9U6Du9dLiMKdeZBk2wfdAABp3E9ESJqohOSIPA=
+
+Name: ch/qos/logback/classic/net/SimpleSocketServer.class
+SHA-256-Digest: f7+I4CA5pBkwxcYbst5f0eyr3/t428flfCousy9CTdc=
+
+Name: ch/qos/logback/classic/pattern/ContextNameConverter.class
+SHA-256-Digest: h5J4tXUKcnGelJrRBljN58CZn5AdNLoHIv96ghLl+Lw=
+
+Name: ch/qos/logback/classic/boolex/IEvaluator.class
+SHA-256-Digest: UFL1kdNKhFay9LAnMxBDhKglGb6kSkGqKa9nMDnTBiM=
+
+Name: ch/qos/logback/classic/joran/action/LevelAction.class
+SHA-256-Digest: Xzn+ktMw/4qUbFquzjrZce1u28Non+1XyRt+qVIB9fc=
+
+Name: ch/qos/logback/classic/jmx/MBeanUtil.class
+SHA-256-Digest: RriyIa0Lilu3CMcqc0ggBMiZEUW6gDbsz0Ft+ZmNFyI=
+
+Name: ch/qos/logback/classic/pattern/LineOfCallerConverter.class
+SHA-256-Digest: uKusKhLc/ArpXlWeuHb71BPCK9zXR3GDnXxCfOO9qWw=
+
+Name: ch/qos/logback/classic/spi/LoggerRemoteView.class
+SHA-256-Digest: Pr3tiVCCPUZWDG7QnMGx22q64sVybrhXZXwJmPhcGwI=
+
+Name: ch/qos/logback/classic/gaffer/ConfigurationDelegate$_logger_clos
+ ure1.class
+SHA-256-Digest: O7cWtxiDo31BZfFAMFw5Bzx6PwAdg+o8pqZYrbYD/pk=
+
+Name: ch/qos/logback/classic/net/SocketNode.class
+SHA-256-Digest: nb5pKiiGmJDUkNjuhsVPgKenPylfhxh7ubyS/od/izE=
+
+Name: ch/qos/logback/classic/sift/JNDIBasedContextDiscriminator.class
+SHA-256-Digest: 0PnR/XBe9/sUwwOsJ76IOvcfDzvezXoHb5pglTExjcg=
+
+Name: ch/qos/logback/classic/jmx/JMXConfiguratorMBean.class
+SHA-256-Digest: Nblrfl9IFwHIJtfjY8//Og0gfs0pkQ720qxV1gwNDQ0=
+
+Name: ch/qos/logback/classic/pattern/MarkerConverter.class
+SHA-256-Digest: e1aRZtrbGarDk4soDvaXzmvrKvRp/87+0jPynZjfrOg=
+
+Name: ch/qos/logback/classic/helpers/MDCInsertingServletFilter.class
+SHA-256-Digest: 6wTp+QZi16/0wtMsdYqhp/XkcKafN/kbyJCBus9VA7Y=
+
+Name: ch/qos/logback/classic/selector/DefaultContextSelector.class
+SHA-256-Digest: 3yrrojV1xrdzYTMEmR9gGcm+ZMH3knHCqsREKibJmfU=
+
+Name: ch/qos/logback/classic/boolex/EvaluatorTemplate.class
+SHA-256-Digest: G+ehVruc2mWWnqdCfaWbv/jr3N6e3Sn68pJC1gEwlaI=
+
+Name: ch/qos/logback/classic/filter/LevelFilter.class
+SHA-256-Digest: /69yIeblyk6gkA0M/ShpO5x2KmNNjGptLnPEOR8rrw8=
+
+Name: ch/qos/logback/classic/pattern/LocalSequenceNumberConverter.clas
+ s
+SHA-256-Digest: xDtFtPowNjGCUwek+UI1OhOnLr1dYDx7PQMoFLwmKGI=
+
+Name: ch/qos/logback/classic/pattern/TargetLengthBasedClassNameAbbrevi
+ ator.class
+SHA-256-Digest: eM8Z/9L+MQR3Zyk1SxMRtqxDOr7FtAoUePXNHNFjzVo=
+
+Name: ch/qos/logback/classic/spi/ThrowableProxyUtil.class
+SHA-256-Digest: CtH+BlO5KhqwjKotszmb6udmY+8o+yXt9MCr28PPOKQ=
+
+Name: ch/qos/logback/classic/pattern/Abbreviator.class
+SHA-256-Digest: Pt35lWUJIsUJKFBXAKfEZ2KnJ1gMAw4MUFvjDbwZqoY=
+
+Name: ch/qos/logback/classic/turbo/TurboFilter.class
+SHA-256-Digest: JmPyROhzz+ved/rYIyy78ANM9JWiwUgysVKtOKlqfgQ=
+
+Name: ch/qos/logback/classic/net/JMSTopicSink.class
+SHA-256-Digest: BPU2tzm+bqYx45B/6+cWnTEtzn2OhKcWf5ttM24G9Kw=
+
+Name: ch/qos/logback/classic/gaffer/GafferConfigurator.class
+SHA-256-Digest: pGx/ttl83fTLl2u6GPDtnBlyAj6cOAMMJsOPkzG9dpE=
+
+Name: ch/qos/logback/classic/selector/ContextJNDISelector.class
+SHA-256-Digest: VMR1blAEfx5vISrW8WGB4LM3LcoeK3ajig8v6ySITTo=
+
+Name: ch/qos/logback/classic/boolex/OnMarkerEvaluator.class
+SHA-256-Digest: paE/lK89pNIvcN841Eh5/t03qpQWINlrZkVusc9+Yqw=
+
+Name: ch/qos/logback/classic/spi/ILoggingEvent.class
+SHA-256-Digest: X6tuYfwYLPp/EsIF8rvnEWUycpuPGfZJ4ORcN86ygIc=
+
+Name: ch/qos/logback/classic/util/StatusListenerConfigHelper.class
+SHA-256-Digest: GFjnfDNCb99r1gRMUEXal2nnyPz5u0UCDC0idhtKYMk=
+
+Name: ch/qos/logback/classic/net/server/RemoteAppenderServerRunner.cla
+ ss
+SHA-256-Digest: WLUIlRamtr+zPsmnK/y7Sb6xsq7VviGXfZPuA6ov7Ig=
+
+Name: ch/qos/logback/classic/pattern/LineSeparatorConverter.class
+SHA-256-Digest: f8L6zw6vVWDX98rJ6ejdOCr+gr4zJEaT7J1qrrDK5hg=
+
+Name: ch/qos/logback/classic/pattern/ThrowableProxyConverter.class
+SHA-256-Digest: L3BYiB7vUUUTXi0tRy0EcMcpHWHE6kWemEOSudrqknk=
+
+Name: ch/qos/logback/classic/pattern/color/HighlightingCompositeConver
+ ter.class
+SHA-256-Digest: k7cFV8JHhrC9ODy/D8uNV1rwOEzfIkf1DAHqI2kK02E=
+
+Name: about.html
+SHA-256-Digest: iZRRdvH13aYxc+Vg4zl8EeyG4U6X5kULZPXCn/CWJfk=
+
+Name: ch/qos/logback/classic/net/SocketAcceptor.class
+SHA-256-Digest: gj7YKl9yYYwUYUk+MYg1vPuRh+WKONiLdVmNhSB/y/Y=
+
+Name: ch/qos/logback/classic/spi/LoggingEvent.class
+SHA-256-Digest: sVwAcu2V6hayVZ18JOjYn1kTqXymalRIXeQ3a2PAPHY=
+
+Name: ch/qos/logback/classic/pattern/LevelConverter.class
+SHA-256-Digest: zSNTCUmBoBf/VhiMxOrwuF5VcRNWT9E7aVydxKqrfxg=
+
+Name: ch/qos/logback/classic/db/DBHelper.class
+SHA-256-Digest: OjZyDjj7P8BZXPxMn2X5TXzgDwhveCUyVhTdmwrebgg=
+
+Name: ch/qos/logback/classic/net/ReceiverBase.class
+SHA-256-Digest: MQkLZWdBxheDFowYMZ/sYg9QcVlXWh7+iynq4RYJl8E=
+
+Name: ch/qos/logback/classic/pattern/MethodOfCallerConverter.class
+SHA-256-Digest: 8IP55QwIVirZVEoPGWzNMIpmy6D6Q+YFQzl1uvXhFh0=
+
+Name: ch/qos/logback/classic/pattern/CallerDataConverter.class
+SHA-256-Digest: Gce+9x3EOeDa2vumto7MYyFIpisUhUGJtOawIu1k0/w=
+
+Name: ch/qos/logback/classic/net/server/ServerSocketAppender.class
+SHA-256-Digest: mAn7HLed+zGQ2FS/WT7jDx5Y+qpvEJEKd0XQfl3RT+Q=
+
+Name: ch/qos/logback/classic/turbo/DynamicThresholdFilter.class
+SHA-256-Digest: QBZr1o1fmoNYNrsqqSMi9oGSXyY3vmOSgIPXBLKioic=
+
+Name: ch/qos/logback/classic/gaffer/PropertyUtil.class
+SHA-256-Digest: Lr9IX5um8efstnxamaUzXNYir51tEwUd4sxXXVLtUuc=
+
+Name: ch/qos/logback/classic/joran/action/LoggerContextListenerAction.
+ class
+SHA-256-Digest: eAkrEooSC030r06W93JH2Dew2OzXyytZza48RXcMEIw=
+
+Name: ch/qos/logback/classic/db/names/SimpleDBNameResolver.class
+SHA-256-Digest: Fhb2bGxx56jnM6GpjWNTTWDTM7HfmbMm6gFWLt9HifY=
+
+Name: ch/qos/logback/classic/html/DefaultCssBuilder.class
+SHA-256-Digest: IRuet1nAsKlhZicy429VhV0gux45lPj5S5Uhoz1FgyU=
+
+Name: ch/qos/logback/classic/turbo/ReconfigureOnChangeFilter$Reconfigu
+ ringThread.class
+SHA-256-Digest: kuwVqdfwiYAProzHZ+INmdqayNHoGaKV8j+rFyBuzrg=
+
+Name: ch/qos/logback/classic/turbo/LRUMessageCache.class
+SHA-256-Digest: QJLQmjOgBOwR6KwKWBYMknkAV5yljt7+mq45zDcgbIY=
+
+Name: ch/qos/logback/classic/pattern/EnsureExceptionHandling.class
+SHA-256-Digest: vYVNMmaHvgpuEETRWQe1YJoT5eB17XTP2cm6fqYru5M=
+
+Name: ch/qos/logback/classic/net/SSLSocketAppender.class
+SHA-256-Digest: r4rv/pBQAXyKTppAuaZ00iGOtcoKJEtAIMKsujjvmv4=
+
+Name: ch/qos/logback/classic/sift/SiftingJoranConfigurator.class
+SHA-256-Digest: cDJGAKN+k+5Y9kyuGMVNmRGRS4lfopx1vu0BIMwNMow=
+
+Name: ch/qos/logback/classic/pattern/PropertyConverter.class
+SHA-256-Digest: OtmpiafpLosizVgnqWhahuevJnlFRr6X78GsmP5Hlp4=
+
+Name: ch/qos/logback/classic/spi/PlatformInfo.class
+SHA-256-Digest: MGfhscYBwKbGGKTX7uAr98scCEJcF/gUjhQdjjr1lMM=
+
+Name: ch/qos/logback/classic/pattern/MessageConverter.class
+SHA-256-Digest: Q9FuseeEsow9xcYDPpEjU6bKLxnZGR00ej9gHmplt7k=
+
+Name: ch/qos/logback/classic/turbo/MatchingFilter.class
+SHA-256-Digest: 320LhbiOuFpEUMwK4I26IJN9n6w24fbxvSAr3jzFsZQ=
+
+Name: ch/qos/logback/classic/gaffer/ConfigurationDelegate.class
+SHA-256-Digest: C7exz7ga+gEszUZruZwouS1sFD6f93+b1Br+5eIcUc4=
+
+Name: ch/qos/logback/classic/net/server/SSLServerSocketAppender.class
+SHA-256-Digest: OWmRopxp91V1z3vUF2GRGdd3wjTgJtN1YKeDJZEAmSY=
+
+Name: ch/qos/logback/classic/turbo/ReconfigureOnChangeFilter.class
+SHA-256-Digest: JioSApW+GKRH5O3rX6pHo4vJejqPgBk64fLwjbMmWTM=
+
+Name: ch/qos/logback/classic/util/CopyOnInheritThreadLocal.class
+SHA-256-Digest: B9ESbB7KqANcAmr7bzmVMRkeKIAByIAxcl5sd21vieg=
+
+Name: ch/qos/logback/classic/pattern/ThreadConverter.class
+SHA-256-Digest: 4fj5md7q0bS4ADOcJdjj+9w5qH1F6/uMj1Ue6cBbWEM=
+
+Name: ch/qos/logback/classic/pattern/MDCConverter.class
+SHA-256-Digest: XZAnU8ojD/2xPSXCljCUmblaS5J8yhhY4TERc3XxWA4=
+

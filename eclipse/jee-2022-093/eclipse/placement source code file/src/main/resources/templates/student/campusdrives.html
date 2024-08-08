@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="student/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="student/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h2 class="m-0 font-weight-bold text-primary">Campuse Drives</h2>
+                   
+                </div>
+               
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                    <thead class="thead-light">
+                      <tr> 
+                       <th>#</th> 
+                        <th>Company</th>  
+                         <th>Title</th>  
+                         <th>Period</th>   
+                        <th>View & Apply</th>
+                        <th>Applied</th>
+                         <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                         <th>#</th> 
+                            <th>Company</th>  
+                            <th>Title</th>  
+                            <th>Period</th> 
+                        <th>View & Apply</th>
+                         <th>Applied</th>
+                           <th>Result</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr th:each="d:${jobposts}">
+                        <td th:text="${d.id}"></td>
+                        <td th:text="${d.company}"></td>
+                        <td th:text="${d.jobtitle}"></td>
+                        <td th:text="${#calendars.format(d.fromdate,'dd MMM yyyy') +' - '+#calendars.format(d.todate,'dd MMM yyyy')}"></td>
+                    <td><a th:href="${'/student/viewjobpost/'+d.id}">view</a></td>
+                    <td class='text-success' th:text="${d.applied =='' ?'':('on '+ #calendars.format(d.applied,'dd MMM yyyy'))}"></td>
+                   <td th:text="${d.result}"></td>
+                    </tr>
+                    </tbody>
+                     </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+ 
+ 
+    </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="student/index :: footer">
+        
+     
+     </footer> 
+  
+</body>
+
+</html>

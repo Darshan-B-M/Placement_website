@@ -1,0 +1,180 @@
+ <!DOCTYPE html>
+ <html lang="en"> 
+   <head th:replace="admin/index :: head"> 
+   </head>
+   <body>
+     <!-- header starts -->
+     <nav    th:replace="admin/index :: menu">
+    
+     </nav>
+<section class="ftco-section contact-section cta page-main">
+          <div class="container" data-aos="zoom-out">
+
+                <div class="row g-5">
+              <div class="card mb-4">
+                <div class="card-header py-3">
+             
+            <a href="javascript:void(0)" class="btn pull-right btn-flat btn-success ml-3" id="print"><span class="fa  fa-print"></span>  Print</a>
+        </div>
+        <div id="print_out">
+        <h3 th:text="${uobj.type+' DETAILS'}"></h3>
+           <div class="table-responsive p-3">
+                   <div class="row">
+                     <div class="col-6">
+						<div class="form-group">
+							<label>User ID</label>
+							<span class="form-control rounded-0" th:text="${uobj.id}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Name</label>
+							<span class="form-control rounded-0" th:text="${uobj.name}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Email</label>
+							<span class="form-control rounded-0" th:text="${uobj.email}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Contact</label>
+							<span class="form-control rounded-0" th:text="${uobj.contact}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Status</label>
+							<span class="form-control rounded-0" th:text="${uobj.status == 1?'Active':'Inactive' }"></span>
+						</div>
+						</div>
+                  </div>
+                  <div th:if="${uobj.type=='STUDENT'}"> 
+                   <div class="row"  th:if="${eobj}"> 
+                      <div class="form-group" th:if="${sfstatus != null}">
+							<label>After Passout</label>
+							<span class="form-control rounded-0 text-primary h4" th:text="${sfstatus.status}"></span>
+						</div> 
+                     <div class="col-6">
+						<div class="form-group">
+							<label>Regno.</label>
+							<span class="form-control rounded-0" th:text="${eobj.regno}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Course</label>
+							<span class="form-control rounded-0" th:text="${course}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Branch</label>
+							<span class="form-control rounded-0" th:text="${branch}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>DOB</label>
+							<span class="form-control rounded-0" th:text="${#calendars.format(eobj.dob,'dd MMM yyyy')}"></span>
+						</div>
+						</div>
+						 <div class="col-6">
+						<div class="form-group">
+							<label>Joining Year</label>
+							<span class="form-control rounded-0" th:text="${eobj.joiningyear}"></span>
+						</div>
+						</div>
+						<div class="col-12">
+						<div class="form-group">
+							<label>About</label>
+							<span class="form-control rounded-0" th:text="${eobj.aboutme}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Academic Year</label>
+							<span class="form-control rounded-0" th:text="${ayear}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Avg.Score</label>
+							<span class="form-control rounded-0" th:text="${eobj.avgscore}"></span>
+						</div>
+						</div>
+                  </div>
+                  </div>
+                    <div th:if="${uobj.type=='COMPANY'}"> 
+                   <div class="row" th:if="${eobj}">
+                     <div class="col-12">
+						<div class="form-group">
+							<label>About</label>
+							<span class="form-control rounded-0" th:text="${eobj.about}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Website</label>
+							<span class="form-control rounded-0" th:text="${eobj.website}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Started Year</label>
+							<span class="form-control rounded-0" th:text="${eobj.startedyear}"></span>
+						</div>
+						</div>
+						<div class="col-6">
+						<div class="form-group">
+							<label>Recruitment Head</label>
+							<span class="form-control rounded-0" th:text="${eobj.recruitmenthead}"></span>
+						</div>
+						</div> 
+                  </div>
+                  </div>
+         </div>
+    </div>
+</div>
+                </div> 
+        </div>
+  </section>
+     
+     <!-- ======= Footer ======= -->
+     <footer  th:replace="admin/index :: footer">
+        
+     
+     </footer>   
+<script>
+    $(function(){
+       
+        $('#print').click(function(){ 
+            var _h = $('head').clone()
+            var _p = $('#print_out').clone();
+            var _el = $('<div>')
+            _el.append(_h)
+            _el.append('<style>html, body, .wrapper {min-height: unset !important;}.btn{display:none !important}</style>')
+            _p.prepend('<div class="d-flex mb-3 w-100 align-items-center justify-content-center">'+
+            '<img class="mx-4" src="/assets/img/logo/logo.png" width="50px" height="50px"/>'+
+            '<div class="px-2">'+ 
+            '<h3 class="text-center">Student Information</h3>'+
+            '</div>'+
+            '</div><hr/>');
+            _el.append(_p)
+            var nw = window.open("","_blank","width=1200,height=1200")
+                nw.document.write(_el.html())
+                nw.document.close()
+                setTimeout(() => {
+                    nw.print()
+                    setTimeout(() => {
+                        nw.close() 
+                    }, 300);
+                }, 500);
+        })
+    })
+</script>
+</body>
+
+</html>
